@@ -59,3 +59,25 @@ To set up the project in Eclipse:
 4. In the open dialog, select the build path, i.e. ~/workspace/cmake-sdl2-template/build. 
 Eclipse should be able to find the project.
 5. Click on "Project -> Build Project".
+
+## Troubleshooting
+There seems to be a problem with the sdl2-config.cmake script provided with SDL2 development libraries.
+If you get this error, it can be easily fixed:
+```
+CMake Error at CMakeLists.txt:18 (add_executable):
+  Target "main" links to item "-L/usr/lib/x86_64-linux-gnu -lSDL2 " which has
+  leading or trailing whitespace.  This is now an error according to policy
+  CMP0004.
+```
+You just need to find the sdl2-config.cmake file:
+```
+locate sdl2-config.cmake
+```
+Once that you know where it is, go and edit this file, removing any extra expaces and replacing this line:
+```
+set(SDL2_LIBRARIES "-L${SDL2_LIBDIR}  -lSDL2 ")
+```
+With this:
+```
+set(SDL2_LIBRARIES "-L${SDL2_LIBDIR}  -lSDL2")
+```
