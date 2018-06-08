@@ -38,7 +38,6 @@ sudo apt-get install cmake
 ```
 
 ## How to use
-In order to make an out-of-place build with a given generator, you can follow this procedure:
 First of all, clone the repo to a desired location:
 ```
 mkdir -p ~/workspace
@@ -46,15 +45,17 @@ cd ~/workspace
 git clone git@github.com:azarrias/cmake-sdl2-template.git
 ```
 Then create a directory for the out-of-source build and execute cmake as needed.
+
 In this example, Eclipse will be the IDE of choice:
 ```
 cd ~/workspace/cmake-sdl2-template
 mkdir build && cd build
-cmake ../src -G "Eclipse CDT4 - Unix Makefiles" -D CMAKE_BUILD_TYPE=Debug -D CMAKE_ECLIPSE_VERSION=4.7.2
+cmake -G "Eclipse CDT4 - Unix Makefiles" -D CMAKE_BUILD_TYPE=Debug -D CMAKE_ECLIPSE_VERSION=4.7.2 ../src 
 ```
 To set up the project in Eclipse:
 1. Start Eclipse (it does not matter where you set your workspace).
-2. Uncheck the Project -> Build Automatically option.
-3. Import... -> Existing Projects into Workspace.
-4. Select the build path, i.e. ~/workspace/cmake-sdl2-template/build. Eclipse should be able to find the project.
-5. Project -> Build Project
+2. Uncheck the "Project -> Build Automatically" option.
+3. Select "Import... -> Existing Projects into Workspace".
+4. In the open dialog, select the build path, i.e. ~/workspace/cmake-sdl2-template/build. 
+Eclipse should be able to find the project.
+5. Click on "Project -> Build Project".
